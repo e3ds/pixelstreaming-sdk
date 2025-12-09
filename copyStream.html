@@ -1,0 +1,75 @@
+<!doctype html>
+<html style="width:100%;height:100%">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="https://d35e1ftufisrhj.cloudfront.net/NS/assets/images/43ef81525e6853dc.ico"
+        type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96"
+        href="https://d35e1ftufisrhj.cloudfront.net/NS/assets/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://d35e1ftufisrhj.cloudfront.net/NS/assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://d35e1ftufisrhj.cloudfront.net/NS/assets/images/favicon-16x16.png">
+    <title>Pixel Streaming</title>
+
+
+    <script defer src="./scripts/dist/e3dsCore.min_ns.js"></script>
+    <script defer type="text/javascript" src="./scripts/tokenManager.js"></script>
+    <script defer type="text/javascript" src="./scripts/scripts_demo.js"></script>
+
+
+
+
+</head>
+
+<body style="width:100vw;height:100vh;min-height:-webkit-fill-available;font-family:Montserrat;margin:0">
+    <div id="playerUI" style="width: 500px; height: 500px;">
+
+    </div>
+    <button title="Delete current Video Element and Assign Stream to a New Video Element"
+        onclick="replaceVideoElement()">
+        Replace Video Element
+    </button>
+
+    <script>
+        function replaceVideoElement() {
+            const streamingVideo = document.getElementById('streamingVideo');
+
+            if (!streamingVideo || !streamingVideo.srcObject) {
+                alert('No active streaming video element found');
+                return;
+            }
+
+            let stream = streamingVideo.srcObject;
+
+            // Remove old video element
+            streamingVideo.remove();
+
+            // Create new video element after 5 seconds
+            setTimeout(() => {
+                const newVideo = document.createElement('video');
+                newVideo.id = 'streamingVideo2';
+                newVideo.autoplay = true;
+                newVideo.muted = true;
+                newVideo.style.width = '100%';
+                newVideo.style.height = '100%';
+                newVideo.style.position = "absolute";
+                newVideo.style.pointerEvents = "all";
+                document.getElementById('videoElementParent').appendChild(newVideo);
+
+                newVideo.srcObject = stream;
+            }, 5000);
+        }
+    </script>
+
+</body>
+
+</html>
