@@ -70,3 +70,6 @@ e3ds_controller.callbacks.onHtmlBind=function ()
    
 
 }
+
+//call this function to terminate your stream
+// e3ds_controller.terminateStream();
