@@ -1,8 +1,8 @@
 
-const streamingApiKey = "Your streaming api key";
+const streamingApiKey = "U2FsdGVkX1+95Fk76+iDeMmJiJc0TXEhyJWlSXBFJJuO9kUDP1z/YImgj+LLtdvy7plV6sRdNaHluVfgNlKox9Z0bSEGIc7v3XmOf64ksVY2XwfEDa1z+Ct/y3Ft7gxnFFjyZpDmqDU6BuxnzW3jAQ5i5obEPcBVpjK3IgMZ8ds=";
 	
 const tokenExpiryDuration = 60000
-var clientUserName = "username";
+var clientUserName = "demo";
 var streamingAppInfo = 
 				{
 					"core": 
@@ -10,8 +10,8 @@ var streamingAppInfo =
 												
 												"domain": "connector.eagle3dstreaming.com",
 												"userName": clientUserName,
-												"appName": "Your app name",
-												"configurationName": "Your config name",
+												"appName": "E3DS_StarterApp",
+												"configurationName": "default",
 												"version": "latest",
 												
 											  },
@@ -86,7 +86,6 @@ async function GenerateStreamingSessionToken(appName=null) {
   }
 }
 
- //window.e3ds_streaming_token =await GenerateStreamingSessionToken()
  
  (async () => {
  var data = await GenerateStreamingSessionToken();
