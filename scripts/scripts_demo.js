@@ -73,3 +73,15 @@ e3ds_controller.callbacks.onHtmlBind=function ()
 
 //call this function to terminate your stream
 // e3ds_controller.terminate();
+
+//use this function to control video quality
+//e3ds_controller.setQualityPoint(value); //value from 1 to 51
+
+//use this function to set volume
+//e3ds_controller.setVolume(value); //value from 0 to 1
+
+//use this function to capture screenshot
+//e3ds_controller.captureScreenShot();
+
+//use this function to toggle fullscreen
+//e3ds_controller.toggleFullscreen();
