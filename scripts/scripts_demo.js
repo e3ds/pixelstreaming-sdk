@@ -85,3 +85,6 @@ e3ds_controller.callbacks.onHtmlBind=function ()
 
 //use this function to toggle fullscreen
 //e3ds_controller.toggleFullscreen();
+
+//use this function to send message to Unreal app
+//e3ds_controller.sendToUnreal(descriptor);

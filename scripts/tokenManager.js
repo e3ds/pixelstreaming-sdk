@@ -76,8 +76,6 @@ async function GenerateStreamingSessionToken(appName=null) {
     }
 
     console.log("response.token:", data.token);
-	
-    //return data.token;
     return data
 
   } catch (err) {
@@ -86,11 +84,9 @@ async function GenerateStreamingSessionToken(appName=null) {
   }
 }
 
- //window.e3ds_streaming_token =await GenerateStreamingSessionToken()
  
  (async () => {
  var data = await GenerateStreamingSessionToken();
- //start streaming process
   e3ds_controller.main(data);
 
 })();
