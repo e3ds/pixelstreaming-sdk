@@ -14,13 +14,9 @@ var streamingAppInfo =
 												"configurationName": "Your config name",
 												"version": "latest",
 												
-											  },
-				  
-					"configurationToOverride": 
-											  {
-												
-												
 											  }
+				  
+					
 				}
 
 				
