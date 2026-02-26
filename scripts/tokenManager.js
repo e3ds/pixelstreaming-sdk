@@ -1,8 +1,10 @@
+// use your streaming api key
+const streamingApiKey = "U2FsdGVkX19LvBvAE3QKohlXMM1rC98lj5BT9TKPaJsv+/mH+OZgtHuEWPfNvZPEKaUAaq4IH4O2OyJzzgjFbY2dbht+lWtkgGLzZDJool18kdZ0bH63gjdxFmcUTNJjwYzcps/pk2RNUMaMxUG2DOky76W/wL+xBxIQEzaKNJY=";
 
-const streamingApiKey = "Your streaming api key";
 	
 const tokenExpiryDuration = 60000
-var clientUserName = "username";
+
+var clientUserName = "Fakhrul"; // use your username
 var streamingAppInfo = 
 				{
 					"core": 
@@ -10,8 +12,8 @@ var streamingAppInfo =
 												
 												"domain": "connector.eagle3dstreaming.com",
 												"userName": clientUserName,
-												"appName": "Your app name",
-												"configurationName": "Your config name",
+												"appName": "DemoAppTP", // use your app name
+												"configurationName": "default",
 												"version": "latest",
 												
 											  }
