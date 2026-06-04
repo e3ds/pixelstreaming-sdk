@@ -12,8 +12,8 @@ var streamingAppInfo =
 												
 												"domain": "connector.eagle3dstreaming.com",
 												"userName": clientUserName,
-												"appName": "DemoAppTP", // use your app name
-												"configurationName": "default",
+												"appName": "FeaturesPluginDemo", // use your app name
+												"configurationName": "sdk", //use your config name
 												"version": "latest",
 												
 											  }
