@@ -88,7 +88,7 @@ e3ds_controller.callbacks.onHtmlBind = function () {
 function setStreamQuality(value) {
     console.log("Setting stream quality point:", value);
     //use this function to control video quality
-    e3ds_controller.setQualityPoint(value); 
+    e3ds_controller.setQualityPoint(value);
     //value from 1 to 51
 }
 
@@ -101,8 +101,12 @@ function setStreamQuality(value) {
 //use this function to capture screenshot
 //e3ds_controller.captureScreenShot();
 
-//use this function to toggle fullscreen
-//e3ds_controller.toggleFullscreen();
+
+function toggleStreamFullscreen() {
+    console.log("Toggling fullscreen mode");
+    //use this function to toggle fullscreen
+    e3ds_controller.toggleFullscreen();
+}
 
 
 function sendMessageToUnreal() {
@@ -113,6 +117,6 @@ function sendMessageToUnreal() {
 }
 
 // use this function to receives messages sent back from Unreal.
-e3ds_controller.callbacks.onResponseFromUnreal = function(descriptor){
+e3ds_controller.callbacks.onResponseFromUnreal = function (descriptor) {
     console.log("Message sent from Unreal:", descriptor);
 };
