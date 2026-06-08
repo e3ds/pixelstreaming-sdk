@@ -98,8 +98,13 @@ function setStreamQuality(value) {
 //use this function to set volume
 //e3ds_controller.setVolume(value); //value from 0 to 1
 
-//use this function to capture screenshot
-//e3ds_controller.captureScreenShot();
+
+function captureStreamScreenshot() {
+    console.log("Capturing screenshot");
+    //use this function to capture screenshot
+    e3ds_controller.captureScreenShot();
+}
+
 
 
 function toggleStreamFullscreen() {
