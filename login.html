@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 350px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .login-box h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+            color: #222;
+        }
+
+        .login-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .login-box input:focus {
+            outline: none;
+            border-color: #00b7c7;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background: #00b7c7;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background: #009aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <form onsubmit="handleLogin(event)">
+        <h3>Login Here</h3>
+
+        <label for="email">Email</label>
+        <input type="text" placeholder="Email or Phone" id="email" name="email">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <button type="submit">Log In</button>
+    </form>
+</div>
+
+<script>
+function handleLogin(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // Replace this with your actual authentication logic
+    localStorage.setItem("isAuthenticated", "true");
+
+    window.location.href = "/e3ds_streaming_FE.html";
+}
+</script>
+
+</body>
+</html>
