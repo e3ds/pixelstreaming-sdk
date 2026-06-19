@@ -8,11 +8,11 @@ e3ds_controller.callbacks.onError = function (errorMsg) {
 e3ds_controller.callbacks.onDataChannelOpen = function () {
     console.log("Stream Connected");
 
-    const img = document.getElementById("loadingImage");
+    // const img = document.getElementById("loadingImage");
 
-    if (img) {
-        img.remove();
-    }
+    // if (img) {
+    //     img.remove();
+    // }
 
 }
 e3ds_controller.callbacks.onDataChannelClose = function () {
@@ -24,20 +24,20 @@ e3ds_controller.callbacks.onConfigAcquire = function () {
     console.log("ob-onConfigAcquire");
 
     // Create image element
-    const img = document.createElement("img");
+    // const img = document.createElement("img");
 
-    img.src = "https://i.ibb.co.com/hxwXFHXS/Gemini-Generated-Image-gzrkshgzrkshgzrk.png";
+    // img.src = "https://i.ibb.co.com/hxwXFHXS/Gemini-Generated-Image-gzrkshgzrkshgzrk.png";
 
-    img.id = "loadingImage";
-    img.style.position = "fixed";
-    img.style.top = "0";
-    img.style.left = "0";
-    img.style.width = "100vw";
-    img.style.height = "100vh";
-    img.style.objectFit = "cover";
-    img.style.zIndex = "99999";
+    // img.id = "loadingImage";
+    // img.style.position = "fixed";
+    // img.style.top = "0";
+    // img.style.left = "0";
+    // img.style.width = "100vw";
+    // img.style.height = "100vh";
+    // img.style.objectFit = "cover";
+    // img.style.zIndex = "99999";
 
-    document.body.appendChild(img);
+    // document.body.appendChild(img);
 
 }
 
