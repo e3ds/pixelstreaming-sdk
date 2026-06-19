@@ -46,7 +46,7 @@ e3ds_controller.callbacks.onConfigAcquire = function () {
 e3ds_controller.callbacks.onSessionExpired = function () {
     console.log("Session Expired");
 
-    window.location.href = "assets/pages/my-session-expired.html";
+    //window.location.href = "assets/pages/my-session-expired.html";
 }
 
 
