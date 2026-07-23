@@ -113,6 +113,16 @@ function toggleStreamFullscreen() {
     e3ds_controller.toggleFullscreen();
 }
 
+function setHoverMouse() {
+    console.log("Switching to Hovering Mouse");
+    e3ds_controller.switchMouseControlSchemeTo("HoveringMouse");
+}
+
+function setLockedMouse() {
+    console.log("Switching to Locked Mouse");
+    e3ds_controller.switchMouseControlSchemeTo("LockedMouse");
+}
+
 
 function sendMessageToUnreal() {
     const descriptor = "This message is sent by frontend"
