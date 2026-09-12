@@ -356,7 +356,9 @@ function buildDemoControls() {
      * Blocklist rather than allowlist would be the wrong way round - a new app
      * would inherit buttons it cannot answer, and the failure is silent. */
     const APPS_THAT_UNDERSTAND_CHARACTER_AND_SKIN = [
-        "EpicPixelStreamingSample",
+        /* Put your own app name here. These buttons send Character and Skin
+         * values that only an app built to receive them can act on, so the list
+         * starts empty rather than naming an app you do not have. */
     ];
 
     if (APPS_THAT_UNDERSTAND_CHARACTER_AND_SKIN.indexOf(

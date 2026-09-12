@@ -48,7 +48,7 @@ const STREAMING_CONFIG = {
      * Identifies the person watching. Used for session records and limits.
      * In a real integration this is usually your own logged-in user's id.
      */
-    clientUserName: "demo",
+    clientUserName: "your-username",
 
     /**
      * How long the generated token stays valid, in milliseconds.
@@ -63,17 +63,17 @@ const STREAMING_CONFIG = {
      * Streaming dashboard - they must match exactly, including capitalisation.
      */
     application: {
-        /** The connector your account was given, e.g. "connector_s10.eagle3dstreaming.com". */
+        /** The connector your account was given, e.g. "connector.eagle3dstreaming.com". */
         domain: "connector.eagle3dstreaming.com",
 
         /** The account that owns the app. Often the same as clientUserName. */
-        userName: "demo",
+        userName: "your-username",
 
         /** The app's name exactly as it appears in your dashboard. */
-        appName: "EpicPixelStreamingSample",
+        appName: "YourAppName",
 
         /** Which stored configuration to launch with. "0" is the default one. */
-        configurationName: "0",
+        configurationName: "your-configuration",
 
         /** A specific version, or "latest" to always use the newest. */
         version: "latest"

@@ -134,8 +134,8 @@ function e3dsApplySavedConnection() {
      * It used to read `if (saved.appName)` and overwrite unconditionally - the
      * only field here that did not honour CODE WINS, three lines under the
      * comment describing exactly this bug and calling it "genuinely confusing
-     * to chase". It was: sdk-config.js said FeaturesPluginDemo_UE58, the file served
-     * over HTTP said the same, and the page started something else. Nothing in
+     * to chase". It was: sdk-config.js named one app, the file served over HTTP
+     * said the same, and the page started a different one. Nothing in
      * the source was wrong, so the source is where you look - while the real
      * value sat in one browser's localStorage from some earlier session. It
      * follows that browser and no other, so it reads as a server or caching
