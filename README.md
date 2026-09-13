@@ -74,9 +74,10 @@ Everything else is in one place, kept current:
 
 ### **[learn.eagle3dstreaming.com](https://learn.eagle3dstreaming.com/)**
 
-- [JavaScript SDK guide](https://learn.eagle3dstreaming.com/wiki/javascript-sdk-guide.html) — every call and every callback, in the order they happen
-- [Embed a stream using the SDK](https://learn.eagle3dstreaming.com/wiki/embed-stream-using-e3ds-sdk.html) — moving from this sample into your own application
-- [API keys and session tokens](https://learn.eagle3dstreaming.com/wiki/api-keys-and-tokens.html) — **read this before you go live.** A key shipped to the browser can be read by anyone who visits the page.
+- [Web SDK reference](https://learn.eagle3dstreaming.com/wiki/javascript-sdk-guide.html) — every call and every callback, in the order they happen
+- [Set up the Web SDK](https://learn.eagle3dstreaming.com/wiki/embed-stream-using-e3ds-sdk.html) — moving from this sample into your own application
+- [Streaming API key and tokens](https://learn.eagle3dstreaming.com/wiki/streaming-api-key-and-tokens.html) — **read this before you go live.** A key shipped to the browser can be read by anyone who visits the page.
+- [iframe or Web SDK](https://learn.eagle3dstreaming.com/wiki/iframe-or-web-sdk.html) — the other way to embed, and when it is the better one
 
 ---
 
