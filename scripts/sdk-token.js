@@ -68,9 +68,6 @@ function e3dsConfigProblems() {
         problems.push('STREAMING_API_KEY is still the placeholder. Paste your real key from the dashboard into sdk-config.js.');
     }
 
-    if (!STREAMING_CONFIG.clientUserName) {
-        problems.push('clientUserName is empty. Set it to an identifier for the person watching.');
-    }
 
     if (!STREAMING_CONFIG.application.appName) {
         problems.push('application.appName is empty. Set it to your app\'s name exactly as it appears in the dashboard.');
@@ -157,7 +154,7 @@ async function requestSessionToken(appNameOverride) {
             configurationToOverride: STREAMING_CONFIG.configurationToOverride
         },
         expiry: STREAMING_CONFIG.tokenExpiryMs,
-        client: STREAMING_CONFIG.clientUserName
+        client: STREAMING_CONFIG.application.userName
     };
 
     try {
@@ -232,7 +229,11 @@ async function requestSessionToken(appNameOverride) {
  * main() needs is written once and cannot drift between them.
  *
  * [E3DS-SDK-CLIENT] The viewer identity is passed IN rather than left for the
- * player to find. The player used to read a global named `clientUserName`,
+ * player to find. There used to be a separate `clientUserName` field in
+ * sdk-config.js as well; it always held the same value as
+ * application.userName, so it was removed and this reads the one that is left.
+ *
+ * The player also used to read a global named `clientUserName`,
  * which only ever worked because the sample file happened to spell it that way
  * - STREAMING_CONFIG is a `const` and never becomes a window property, so that
  * global does not exist inside the player at all.
@@ -269,7 +270,7 @@ async function startStream(attempts = 3) {
     for (let i = 0; i < attempts; i++) {
         const tokenData = await requestSessionToken();
         if (tokenData) {
-            e3ds_controller.main({ ...tokenData, client: STREAMING_CONFIG.clientUserName });
+            e3ds_controller.main({ ...tokenData, client: STREAMING_CONFIG.application.userName });
             return true;
         }
         console.warn("Token request failed (attempt " + (i + 1) + " of " + attempts + ").");

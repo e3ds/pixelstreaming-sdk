@@ -99,10 +99,9 @@ function e3dsApiKeyMissing() {
  * gap, so someone who has filled the file in never has stale localStorage
  * quietly override it - which would be a genuinely confusing bug to chase.
  *
- * The username fills BOTH clientUserName (who is watching) and
- * application.userName (who owns the app). They are separate fields because
- * they can differ, but for a demo they are the same person, and the public SDK
- * sample uses one variable for both.
+ * The username fills application.userName, which is the only place it lives
+ * now. There used to be a second field, clientUserName, that always held the
+ * same value; it was removed, so there is one username and one field.
  */
 function e3dsApplySavedConnection() {
     const saved = e3dsLoadSavedConnection();
@@ -118,9 +117,6 @@ function e3dsApplySavedConnection() {
     if (typeof STREAMING_CONFIG === "undefined") return;
 
     if (saved.userName) {
-        if (!STREAMING_CONFIG.clientUserName || STREAMING_CONFIG.clientUserName === "demo") {
-            STREAMING_CONFIG.clientUserName = saved.userName;
-        }
         if (STREAMING_CONFIG.application
             && (!STREAMING_CONFIG.application.userName
                 || STREAMING_CONFIG.application.userName === "demo")) {
@@ -222,8 +218,7 @@ function e3dsShowConnectionSetup(problems, opts) {
          * prefilling that would look like a key is present when none is. It is
          * treated as empty and called out as the missing one. */
         const configuredUser = (typeof STREAMING_CONFIG !== "undefined")
-            ? (STREAMING_CONFIG.clientUserName
-               || (STREAMING_CONFIG.application && STREAMING_CONFIG.application.userName) || "")
+            ? ((STREAMING_CONFIG.application && STREAMING_CONFIG.application.userName) || "")
             : "";
         const keyIsReal = typeof e3dsApiKeyMissing === "function" ? !e3dsApiKeyMissing() : false;
 
@@ -335,7 +330,9 @@ function e3dsShowConnectionSetup(problems, opts) {
              * unrelated field - and they may not even have it. */
             const configSupplies = onDemand
                 && !e3dsApiKeyMissing()
-                && !!(typeof STREAMING_CONFIG !== "undefined" && STREAMING_CONFIG.clientUserName);
+                && !!(typeof STREAMING_CONFIG !== "undefined"
+                      && STREAMING_CONFIG.application
+                      && STREAMING_CONFIG.application.userName);
             if (!configSupplies && (!apiKey || !userName)) {
                 let warn = document.getElementById("e3dsSetWarn");
                 if (!warn) {

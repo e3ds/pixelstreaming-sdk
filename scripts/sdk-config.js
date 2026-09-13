@@ -45,12 +45,6 @@ const STREAMING_API_KEY = "Your Streaming API Key";
  */
 const STREAMING_CONFIG = {
     /**
-     * Identifies the person watching. Used for session records and limits.
-     * In a real integration this is usually your own logged-in user's id.
-     */
-    clientUserName: "your-username",
-
-    /**
      * How long the generated token stays valid, in milliseconds.
      *
      * Short is good: the token only needs to survive long enough for the page
@@ -66,7 +60,8 @@ const STREAMING_CONFIG = {
         /** The connector your account was given, e.g. "connector.eagle3dstreaming.com". */
         domain: "connector.eagle3dstreaming.com",
 
-        /** The account that owns the app. Often the same as clientUserName. */
+        /** The account that owns the app, and the name the session is
+         *  recorded against. One username, used for both. */
         userName: "your-username",
 
         /** The app's name exactly as it appears in your dashboard. */
