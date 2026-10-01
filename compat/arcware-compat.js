@@ -25,8 +25,9 @@
  * NOT AVAILABLE (handlers exist so your code does not break, but they never fire, and each logs a
  * one-time notice): queueHandler, sessionIdHandler, loveLetterHandler, whiteLabellingChangedHandler,
  * fileTransferHandler, the afkWarning* / afkTimedOut events, toggleMic, reconnect, send,
- * sendAnalyticsEvent. Close codes: websocketOnCloseHandler receives { code: 1000, reason } with the
- * reason Eagle gives - Arcware's numeric 4450-4666 codes have no equivalent.
+ * sendAnalyticsEvent. Close codes: websocketOnCloseHandler receives { code: 1000, reason } once per
+ * session (session ending or time limit) - Arcware's numeric 4450-4666 codes have no equivalent.
+ * errorHandler fires when the app crashes or stops unexpectedly (Eagle's onStreamerDisconnected).
  */
 (function () {
     "use strict";
@@ -97,9 +98,24 @@
             videoInitializedHandler();
             streamingStateCallbacks.forEach(function (cb) { try { cb(true); } catch (e) { console.error(e); } });
         });
-        chainCallback("onSessionEnding", function (message) {
-            websocketOnCloseHandler({ code: 1000, reason: String(message || ""), wasClean: true });
+        /* One close per session. Eagle can report the end more than one way - the
+         * ending message, the time limit - and Arcware code expects one close. */
+        var closed = false;
+        function closeOnce(reason) {
+            if (closed) return;
+            closed = true;
+            websocketOnCloseHandler({ code: 1000, reason: String(reason || ""), wasClean: true });
             streamingStateCallbacks.forEach(function (cb) { try { cb(false); } catch (e) { console.error(e); } });
+        }
+        chainCallback("onSessionEnding", function (message) { closeOnce(message); });
+        /* The time limit is reported through onSessionExpired, not always through
+         * onSessionEnding; without this an expiry never reached the close handler. */
+        chainCallback("onSessionExpired", function () { closeOnce("The session reached its time limit."); });
+        /* Eagle's onError does nothing today (see scripts/sdk-callbacks.js). The
+         * nearest real signal is onStreamerDisconnected: it fires only when the app
+         * crashed or stopped unexpectedly, which is what Arcware's errorHandler is for. */
+        chainCallback("onStreamerDisconnected", function () {
+            errorHandler({ message: "The application stopped unexpectedly.", source: "onStreamerDisconnected" });
         });
 
         var listeners = {};

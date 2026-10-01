@@ -29,8 +29,9 @@ session starts.
 | `emitUIInteraction(data)` | `e3ds_controller.sendDataToUE` (a JSON string is parsed first) |
 | `applicationResponseHandler` (assigned or `.add`), `getApplicationResponse`, `onApplicationResponse` | `onResponseFromUnreal`, always delivered as a string, as Arcware does |
 | `videoInitializedHandler.add` | `onDataChannelOpen` |
-| `websocketOnCloseHandler.add` | `onSessionEnding`, as `{ code: 1000, reason, wasClean: true }` |
-| `onStreamingStateChange(cb)` | `true` at `onDataChannelOpen`, `false` at `onSessionEnding` |
+| `websocketOnCloseHandler.add` | `onSessionEnding` or `onSessionExpired` (time limit), once per session, as `{ code: 1000, reason, wasClean: true }` |
+| `errorHandler.add` | `onStreamerDisconnected` - the app crashed or stopped unexpectedly - as `{ message, source }` |
+| `onStreamingStateChange(cb)` | `true` at `onDataChannelOpen`, `false` when the session ends (either way above) |
 | `setAudioEnabled(bool)`, `toggleAudio(video, bool)` | `setVolume(0)` / restore |
 | `disconnect()`, `removePlayer()` | `terminate()` |
 | `rootElement` | `#playerUI` |
