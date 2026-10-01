@@ -1,0 +1,51 @@
+<!doctype html>
+<!--
+  Eagle 3D Streaming - Web SDK demo with a login in front of it.
+  Served by login/server.js (node login/server.js). The page holds no API key:
+  after a correct username and password the server returns a single-use session
+  token, and the page hands that to the SDK.
+-->
+<html lang="en" style="width:100%;height:100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Eagle 3D Streaming - login example (Web SDK)</title>
+    <style>
+        :root { --ink: #1d2433; --muted: #5d6677; --line: #d7dce5; --accent: #2457d6; --bad: #b42318; --bg: #f4f6fa; }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; height: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+        #login { max-width: 360px; margin: 12vh auto 0; padding: 28px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+        h1 { font-size: 20px; margin: 0 0 4px; }
+        p.hint { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+        label { display: block; font-size: 14px; margin: 14px 0 6px; }
+        input { width: 100%; padding: 10px 12px; font-size: 15px; border: 1px solid var(--line); border-radius: 6px; }
+        button { margin-top: 20px; width: 100%; padding: 11px; font-size: 15px; border: 0; border-radius: 6px; background: var(--accent); color: #fff; cursor: pointer; }
+        button:disabled { opacity: .6; cursor: default; }
+        #error { min-height: 20px; margin-top: 12px; color: var(--bad); font-size: 14px; }
+        #stream { display: none; position: fixed; inset: 0; }
+        /* The player renders itself into #playerUI - the SDK looks for it by this id. */
+        #playerUI { width: 100%; height: 100%; }
+        #signOut { position: fixed; top: 10px; right: 10px; z-index: 1000; width: auto; margin: 0; padding: 6px 14px; font-size: 14px; }
+    </style>
+    <!-- The SDK itself (served by server.js from ../scripts/dist). Defines e3ds_controller. -->
+    <script defer src="/sdk/e3dsCore.min_ns.js"></script>
+    <script defer src="login.js"></script>
+</head>
+<body>
+    <form id="login" autocomplete="on">
+        <h1>Sign in to start the stream</h1>
+        <p class="hint">Example user: <code>demo</code> / <code>demo123</code></p>
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button id="submit" type="submit">Sign in</button>
+        <div id="error" role="alert"></div>
+    </form>
+
+    <div id="stream">
+        <div id="playerUI"></div>
+        <button id="signOut" type="button">Sign out</button>
+    </div>
+</body>
+</html>

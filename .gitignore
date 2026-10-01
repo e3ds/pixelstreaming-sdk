@@ -4,3 +4,6 @@
 # and are copied across by accident sooner or later. This is the backstop:
 # even if one lands here, it cannot be committed.
 CLAUDE-*.md
+
+# login example: your own settings, holds your Streaming API key
+login/config.json

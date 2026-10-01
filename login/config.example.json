@@ -1,0 +1,13 @@
+{
+  "port": 3000,
+  "streamingApiKey": "Your Streaming API Key",
+  "tokenExpiryMs": 60000,
+  "application": {
+    "domain": "connector.eagle3dstreaming.com",
+    "userName": "your-username",
+    "appName": "YourAppName",
+    "configurationName": "your-configuration",
+    "version": "latest"
+  },
+  "configurationToOverride": {}
+}
